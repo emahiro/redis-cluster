@@ -26,5 +26,5 @@ jobs:
           context: .
           build-args: redis_version=6.2.11
           platforms: linux/amd64,linux/arm64
-          push: false
+          push: true
           tags: emahiro/redis-cluster:6.2.11
