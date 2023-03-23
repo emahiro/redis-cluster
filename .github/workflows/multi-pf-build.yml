@@ -26,5 +26,18 @@ jobs:
           context: .
           build-args: redis_version=6.2.11
           platforms: linux/amd64,linux/arm64
-          push: true
+          push: false
           tags: emahiro/redis-cluster:6.2.11
+      - name: Login to Docker Hub (eurehub)
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+      - name: Build and push for Redis@6.2.11
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          build-args: redis_version=6.2.11
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: eurehub/redis-cluster:6.2.11
