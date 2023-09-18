@@ -35,11 +35,11 @@ I personally use this to develop redis cluster client code https://github.com/Gr
 
 ## What this repo and container IS NOT
 
-This container that i have built is not supposed to be some kind of production container or one that is used within any environment other then running locally on your machine. It is not ment to be run on kubernetes or in any other prod/stage/test/dev environment as a fully working commponent in that environment. If that works for you and your use-case then awesome. But this container will not change to fit any other primary solution then to be used locally on your machine.
+This container that i have built is not supposed to be some kind of production container or one that is used within any environment other than running locally on your machine. It is not ment to be run on kubernetes or in any other prod/stage/test/dev environment as a fully working commponent in that environment. If that works for you and your use-case then awesome. But this container will not change to fit any other primary solution than to be used locally on your machine.
 
 If you are looking for something else or some production quality or kubernetes compatible solution then you are looking in the wrong repo. There is other projects or forks of this repo that is compatible for that situation/solution.
 
-For all other purposes other then what has been stated you are free to fork and/or rebuild this container using it as a template for what you need.
+For all other purposes other than what has been stated you are free to fork and/or rebuild this container using it as a template for what you need.
 
 
 ## Redis major version support and docker.hub availability
@@ -84,22 +84,23 @@ docker run -e "IP=0.0.0.0" -p 7000-7005:7000-7005 grokzen/redis-cluster:latest
 
 # Usage
 
-This git repo is using `pyinvoke` to pull, build, push docker images. You can use it to build your own images if you like.
+This git repo is using `invoke` to pull, build, push docker images. You can use it to build your own images if you like.
 
 The invoke scripts in this repo is written only for python 3.7 and above
 
-Install `pyinvoke` with `pip install invoke`.
+Install `invoke` with `pip install invoke`.
 
 This script will run `N num of cpu - 1` parralell tasks based on your version input.
 
 To see available commands run `invoke -l` in the root folder of this repo. Example
 
 ```
-(tmp-615229a94c330b9) ➜  docker-redis-cluster git:(pyinvoke) ✗ invoke -l
+(tmp-615229a94c330b9) ➜  docker-redis-cluster git:(invoke) ✗ invoke -l
 "Configured multiprocess pool size: 3
 Available tasks:
 
   build
+  list
   pull
   push
 ```
@@ -107,7 +108,7 @@ Available tasks:
 Each command is only taking one required positional argument `version`. Example:
 
 ```
-(tmp-615229a94c330b9) ➜  docker-redis-cluster git:(pyinvoke) ✗ invoke build 6.0
+(tmp-615229a94c330b9) ➜  docker-redis-cluster git:(invoke) ✗ invoke build 7.0
 ...
 ```
 
@@ -228,10 +229,12 @@ The following tags with pre-built images is available on `docker-hub`.
 
 Latest release in the most recent stable branch will be used as `latest` version.
 
-- latest == 7.0.8
+- latest == 7.0.10
 
 Redis 7.0.x version:
 
+- 7.0.10
+- 7.0.9
 - 7.0.8
 - 7.0.7
 - 7.0.6
@@ -244,6 +247,7 @@ Redis 7.0.x version:
 
 Redis 6.2.x versions:
 
+- 6.2.11
 - 6.2.10
 - 6.2.9
 - 6.2.8
@@ -258,6 +262,7 @@ Redis 6.2.x versions:
 
 Redis 6.0.x versions:
 
+- 6.0.18
 - 6.0.17
 - 6.0.16
 - 6.0.15
